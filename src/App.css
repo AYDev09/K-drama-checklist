@@ -79,7 +79,7 @@ nav {
 #card {
   width: 100%;
   max-width: 20em;
-  height: 23.5em;
+  height: 25.2em;
   border: solid 0.2em #825882;
   background-color: #faf9eb;
   border-radius: 1em;
@@ -95,7 +95,7 @@ nav {
 
 #card img {
   width: 100%;
-  height: clamp(10em, 15vw, 12em);
+  height: clamp(12em, 15vw, 14em);
   object-fit: cover;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
