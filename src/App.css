@@ -78,7 +78,7 @@ nav {
 /* Card Styling */
 #card {
   width: 100%;
-  max-width: 20em;
+  max-width: 24em;
   height: 25.2em;
   border: solid 0.2em #825882;
   background-color: #faf9eb;
@@ -95,7 +95,7 @@ nav {
 
 #card img {
   width: 100%;
-  height: clamp(12em, 15vw, 14em);
+  height: 55%;
   object-fit: cover;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
