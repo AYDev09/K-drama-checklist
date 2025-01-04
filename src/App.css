@@ -1,6 +1,8 @@
 /* General Styling */
 body {
   background-color: #B392AC;
+  background-image: url('assets/9.jpg');
+  background-repeat: no-repeat;
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -64,9 +66,9 @@ nav {
 
 /* Card Styling */
 #card {
-  width: 14em;
-  border: solid 0.1em #d1b3c4;
-  background-color: #D1B3C4;
+  width: 16em;
+  border: solid 0.2em #825882;
+  background-color: #fffdd0;
   border-radius: 1em;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   overflow: hidden;
@@ -94,14 +96,14 @@ nav {
 }
 
 #CardContent h2 {
-  font-size: 1em;
+  font-size: 1.5em;
   margin: 0.5em 0;
 }
 
 /* Button Styling */
 #CardContent button{
   padding: 0.4em 1em;
-  background-color: #733F68;
+  background-color: #B392AC;
   color: #ffffff;
   font-weight: bold;
   border: none;
@@ -133,13 +135,14 @@ nav {
   flex-direction: column;
   gap: 1.5em;
   padding: 2em;
-  background-color: #D1B3C4;
+  background-color: #fffdd0;
   border-radius: 0.5em;
   max-width: 400px;
   margin: 2em auto;
 }
 
 #add-form h2 {
+  font-size: 2em;
   color: #733F68;
   text-align: center;
   margin-bottom: 1em;
@@ -154,8 +157,9 @@ nav {
 }
 
 #add-form input {
+  border:#733F68 solid 0.1em;
   background-color: #ffffff;
-  width: 100%;
+  width: 93%;
 }
 
 #add-form button {
@@ -181,6 +185,8 @@ nav {
 }
 
 #stats {
+  color: #733F68;
+  background-color: #fffdd0;
   margin: 20px;
   padding: 20px;
   border: 1px solid #ddd;
@@ -206,5 +212,13 @@ nav {
 #stats {
   padding: 20px;
 }
+
+#empty-message {
+  text-align: center;
+  font-size: 1.5em;
+  color: #733F68;
+  margin-top: 20px;
+}
+
 
 

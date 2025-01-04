@@ -52,7 +52,7 @@ const App = () => {
   return (
     <div>
       <nav>
-        <h1>K-Drama Tracker</h1>
+        <h1>K-Dramalog</h1>
         <div id="nav-links">
           <button onClick={() => setPage("home")}>Home</button>
           <button onClick={() => setPage("add")}>Add</button>
@@ -62,23 +62,27 @@ const App = () => {
 
       {page === "home" && (
         <div id="home">
-          <div id="cards-container">
-            {dramas.map((drama, index) => (
-              <div key={index} id="card">
-                <img src={drama.image} alt={drama.name} />
-                <div id="CardContent">
-                  <h2>{drama.name}</h2>
-                  <p>Episodes Watched: {drama.episodesWatched} / {drama.totalEpisodes}</p>
-                  <div>
-                    <button onClick={() => incrementEpisodes(index)}>+</button>
-                    <button onClick={() => decrementEpisodes(index)}>-</button>
-                    <button onClick={() => handleDeleteDrama(index)}>Delete</button>
+          {dramas.length === 0 ? (
+            <p id="empty-message">It's empty in here, add some dramas!</p> // Empty message
+          ) : (
+            <div id="cards-container">
+              {dramas.map((drama, index) => (
+                <div key={index} id="card">
+                  <img src={drama.image} alt={drama.name} />
+                  <div id="CardContent">
+                    <h2>{drama.name}</h2>
+                    <p>Episodes Watched: {drama.episodesWatched} / {drama.totalEpisodes}</p>
+                    <div>
+                      <button onClick={() => incrementEpisodes(index)}>+</button>
+                      <button onClick={() => decrementEpisodes(index)}>-</button>
+                      <button onClick={() => handleDeleteDrama(index)}>Delete</button>
+                    </div>
+                    <button><a href={drama.link} id="watch" target="_blank" rel="noopener noreferrer">Watch Here</a></button>
                   </div>
-                  <button><a href={drama.link} id="watch" target="_blank">Watch Here</a></button>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
