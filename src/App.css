@@ -1,38 +1,72 @@
-/* Body and Home Styling */
+/* General Styling */
 body {
-  background-color: #735D78;
+  background-color: #B392AC;
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
 }
 
-#home {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 2em;
-}
-
 /* Navigation Styling */
 nav {
-  width: 100%;
+  padding: 10em;
+  margin-top: -3em;
+  width: 100vw;
   background-color: #735D78;
   color: #ffffff;
   text-align: center;
   padding: 1em 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-nav h1 {
-  margin: 0;
-  font-size: 1.8em;
+
+#nav-links {
+  font-size: 1.5em;
+  display: flex;
+  gap: 1em;
+}
+
+
+#nav-links button:hover {
+  color: #5E4B62;
+}
+
+#nav-links button {
+  background-color: #735D78;
+  border: 0;
+  color: #D1B3C4;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Home Page Styling */
+#home {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+  gap: 1.5em;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 1em;
 }
 
 /* Card Styling */
 #card {
-  border: solid 0.1em #d1b3c4;
   width: 14em;
-  margin: 1em;
+  border: solid 0.1em #d1b3c4;
   background-color: #D1B3C4;
   border-radius: 1em;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
@@ -45,7 +79,6 @@ nav h1 {
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Image Styling */
 #card img {
   width: 100%;
   height: 12em;
@@ -61,16 +94,13 @@ nav h1 {
   text-align: center;
 }
 
-/* Text Styling */
 #CardContent h2 {
   font-size: 1em;
   margin: 0.5em 0;
 }
 
 /* Button Styling */
-#cardButton {
-  display: inline-block;
-  margin-top: 1em;
+#CardContent button{
   padding: 0.4em 1em;
   background-color: #733F68;
   color: #ffffff;
@@ -78,29 +108,76 @@ nav h1 {
   border: none;
   border-radius: 0.3em;
   cursor: pointer;
-  text-align: center;
+  margin: 0.3em;
   transition: background-color 0.3s ease;
 }
 
-#cardButton:hover {
+#CardContent button:hover {
+  background-color: #5E4B62;
+  color: #ffffff;
+}
+
+#CardContent div {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+#CardContent a {
+  text-decoration: none;
+  color:#d1b3c4;
+}
+
+/* Add Form Styling */
+#add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 2em;
+  background-color: #D1B3C4;
+  border-radius: 0.5em;
+  max-width: 400px;
+  margin: 2em auto;
+}
+
+#add-form h2 {
+  color: #733F68;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+#add-form input,
+#add-form button {
+  padding: 0.8em;
+  border: none;
+  border-radius: 0.3em;
+  font-size: 1em;
+}
+
+#add-form input {
+  background-color: #ffffff;
+  width: 100%;
+}
+
+#add-form button {
+  background-color: #733F68;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#add-form button:hover {
   background-color: #5E4B62;
 }
 
-#cardButton a {
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 0.9em;
-  display: block;
-}
-
-/* Responsive Styling for Smaller Screens */
+/* Responsive Styling */
 @media (max-width: 768px) {
-  #home {
-    flex-direction: column;
-    align-items: center;
+  #cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
   }
 
-  #card {
-    width: 90%;
+  #card img {
+    height: 10em;
   }
 }
+
