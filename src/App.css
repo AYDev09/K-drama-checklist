@@ -11,7 +11,7 @@ body {
 /* Navigation Styling */
 nav {
   padding: 10em;
-  width: 100vw;
+  width: 110vw;
   background-color: #735D78;
   color: #ffffff;
   text-align: center;
@@ -135,7 +135,7 @@ nav {
   flex-direction: column;
   gap: 1.5em;
   padding: 2em;
-  background-color: #fffdd0;
+  background-color: #faf9eb;
   border-radius: 0.5em;
   max-width: 400px;
   margin: 2em auto;
@@ -171,17 +171,6 @@ nav {
 
 #add-form button:hover {
   background-color: #5E4B62;
-}
-
-/* Responsive Styling */
-@media (max-width: 768px) {
-  #cards-container {
-    grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
-  }
-
-  #card img {
-    height: 10em;
-  }
 }
 
 #stats {
