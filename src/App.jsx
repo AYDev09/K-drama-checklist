@@ -66,7 +66,7 @@ function App() {
                   <button onClick={() => decrementEpisodes(index)}>➖</button>
                   <button onClick={() => deleteDrama(index)}>🗑️ Delete</button>
                 </div>
-                <button><a href={drama.link} id="watch">Watch Here</a></button>
+                <button><a href={drama.link} id="watch" target="_blank">Watch Here</a></button>
                 
               </div>
             </div>
