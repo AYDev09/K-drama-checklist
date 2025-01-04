@@ -9,7 +9,6 @@ body {
 /* Navigation Styling */
 nav {
   padding: 10em;
-  margin-top: -3em;
   width: 100vw;
   background-color: #735D78;
   color: #ffffff;
@@ -180,4 +179,32 @@ nav {
     height: 10em;
   }
 }
+
+#stats {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+#stats h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#stats p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+#stats {
+  padding: 20px;
+}
+
 

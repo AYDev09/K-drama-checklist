@@ -1,82 +1,91 @@
-import React, { useState, useEffect } from 'react';
-import Add from './Add';
+import React, { useState, useEffect } from "react";
+import Add from "./Add";
+import Stats from "./Stats";
 import './App.css';
 
-function App() {
-  const [dramas, setDramas] = useState(() => {
-    const savedDramas = localStorage.getItem('dramas');
-    return savedDramas ? JSON.parse(savedDramas) : [];
-  });
+const App = () => {
+  const [dramas, setDramas] = useState([]);
+  const [page, setPage] = useState("home");
 
-  const [page, setPage] = useState('home'); // Page state to switch between Home and Add
-
+  // Load data from localStorage when the component mounts
   useEffect(() => {
-    localStorage.setItem('dramas', JSON.stringify(dramas));
+    const savedDramas = JSON.parse(localStorage.getItem('dramas'));
+    if (savedDramas) {
+      setDramas(savedDramas);
+    }
+  }, []);
+
+  // Save dramas to localStorage whenever the 'dramas' state changes
+  useEffect(() => {
+    if (dramas.length > 0) {
+      localStorage.setItem('dramas', JSON.stringify(dramas));
+    }
   }, [dramas]);
 
-  // Add new drama
   const handleAddDrama = (newDrama) => {
-    setDramas([...dramas, { ...newDrama, episodesWatched: 0 }]);
+    const dramaWithEpisodes = { ...newDrama, episodesWatched: 0 }; // Add episodesWatched to the new drama
+    setDramas([...dramas, dramaWithEpisodes]); // Set initial episodesWatched to 0
+    setPage("home"); // Switch to home page after adding
   };
 
-  // Increment episodes watched
   const incrementEpisodes = (index) => {
-    const updatedDramas = [...dramas];
-    updatedDramas[index].episodesWatched += 1;
-    setDramas(updatedDramas);
-  };
-
-  // Decrement episodes watched
-  const decrementEpisodes = (index) => {
-    const updatedDramas = [...dramas];
-    if (updatedDramas[index].episodesWatched > 0) {
-      updatedDramas[index].episodesWatched -= 1;
-      setDramas(updatedDramas);
+    const newDramas = [...dramas];
+    if (newDramas[index].episodesWatched < newDramas[index].totalEpisodes) {
+      newDramas[index].episodesWatched++;
+      setDramas(newDramas); // Update dramas state
     }
   };
 
-  // Delete drama
-  const deleteDrama = (index) => {
-    const updatedDramas = dramas.filter((_, i) => i !== index);
-    setDramas(updatedDramas);
+  const decrementEpisodes = (index) => {
+    const newDramas = [...dramas];
+    if (newDramas[index].episodesWatched > 0) {
+      newDramas[index].episodesWatched--;
+      setDramas(newDramas); // Update dramas state
+    }
+  };
+
+  const handleDeleteDrama = (index) => {
+    const newDramas = dramas.filter((_, i) => i !== index);
+    setDramas(newDramas); // Remove drama and update state
   };
 
   return (
-    <div id="home">
+    <div>
       <nav>
-        <h1>K Drama Checklist and Tracker</h1>
+        <h1>K-Drama Tracker</h1>
         <div id="nav-links">
-          <button onClick={() => setPage('home')}>Home</button>
-          <button onClick={() => setPage('add')}>Add</button>
+          <button onClick={() => setPage("home")}>Home</button>
+          <button onClick={() => setPage("add")}>Add</button>
+          <button onClick={() => setPage("stats")}>Stats</button>
         </div>
       </nav>
 
-      {page === 'home' && (
-        <div id="cards-container">
-          {dramas.map((drama, index) => (
-            <div key={index} id="card">
-              {drama.image && (
+      {page === "home" && (
+        <div id="home">
+          <div id="cards-container">
+            {dramas.map((drama, index) => (
+              <div key={index} id="card">
                 <img src={drama.image} alt={drama.name} />
-              )}
-              <div id="CardContent">
-                <h2>{drama.name}</h2>
-                <p>Episodes Watched: {drama.episodesWatched}</p>
-                <div>
-                  <button onClick={() => incrementEpisodes(index)}>➕</button>
-                  <button onClick={() => decrementEpisodes(index)}>➖</button>
-                  <button onClick={() => deleteDrama(index)}>🗑️ Delete</button>
+                <div id="CardContent">
+                  <h2>{drama.name}</h2>
+                  <p>Episodes Watched: {drama.episodesWatched} / {drama.totalEpisodes}</p>
+                  <div>
+                    <button onClick={() => incrementEpisodes(index)}>+</button>
+                    <button onClick={() => decrementEpisodes(index)}>-</button>
+                    <button onClick={() => handleDeleteDrama(index)}>Delete</button>
+                  </div>
+                  <button><a href={drama.link} id="watch" target="_blank">Watch Here</a></button>
                 </div>
-                <button><a href={drama.link} id="watch" target="_blank">Watch Here</a></button>
-                
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
 
-      {page === 'add' && <Add onAddDrama={handleAddDrama} />}
+      {page === "add" && <Add onAddDrama={handleAddDrama} />}
+      {page === "stats" && <Stats dramas={dramas} />}
     </div>
   );
-}
+};
 
 export default App;

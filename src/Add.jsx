@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 function Add({ onAddDrama }) {
   const [name, setName] = useState('');
   const [image, setImage] = useState(null);
+  const [totalEpisodes, setTotalEpisodes] = useState(''); // Total Episodes state
+  const [episodesWatched, setEpisodesWatched] = useState(null); // Episodes Watched state
   const [link, setLink] = useState('');
 
   // Convert uploaded file to Base64
@@ -21,10 +23,18 @@ function Add({ onAddDrama }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newDrama = { name, image, link };
+    const newDrama = {
+      name,
+      image,
+      totalEpisodes,
+      episodesWatched,
+      link,
+    };
     onAddDrama(newDrama);
     setName('');
     setImage(null);
+    setTotalEpisodes('');
+    setEpisodesWatched(0); // Reset the state after adding
     setLink('');
   };
 
@@ -44,7 +54,23 @@ function Add({ onAddDrama }) {
         type="file"
         accept="image/*"
         onChange={handleImageUpload}
-        placeholder='drama image'
+        placeholder='Drama Image'
+        required
+      />
+
+      <input
+        type="number"
+        value={totalEpisodes}
+        onChange={(e) => setTotalEpisodes(e.target.value)}
+        placeholder="Total Episodes"
+        required
+      />
+
+      <input
+        type="number"
+        value={episodesWatched}
+        onChange={(e) => setEpisodesWatched(e.target.value)}
+        placeholder="Episodes Watched"
         required
       />
 
